@@ -4,7 +4,6 @@ import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.EnumMap;
 import java.util.List;
 
 @Entity
@@ -17,6 +16,7 @@ public class Department {
 
     private long deptId;
     private String deptName;
+    private String departmentCode;
 
     @JoinColumn(referencedColumnName = "deptId", name = "department_dept_id")
     @OneToMany

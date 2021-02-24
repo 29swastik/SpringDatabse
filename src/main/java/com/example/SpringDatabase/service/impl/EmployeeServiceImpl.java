@@ -97,8 +97,8 @@ public class EmployeeServiceImpl implements EmployeeService {
             return employeeResponseDto;
         }
 
-
         return null;
+
     }
 
     @Override
@@ -119,10 +119,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<EmployeeResponseDto> getEmployeeListByDepartment(Long id) {
-       // Department department = departmentRepository.findById(id).get();
-      //  List<Employee> employeeList = employeeRepository.findByDepartment(department);
+       // Department department = departmentRepository.findById(id).get();                      // way1
+      //  List<Employee> employeeList = employeeRepository.findByDepartment(department);        //way1
 
-        List<Employee> employeeList = employeeRepository.findByDepartment_DeptId(id);
+        List<Employee> employeeList = employeeRepository.findByDepartment_DeptId(id);           //way2
 
        // List<Employee> employeeList = employeeRepository.getEmployeeListByDepartmentId(id);
 

@@ -6,4 +6,5 @@ import lombok.Data;
 public class DepartmentRequestDto {
     private long deptId;
     private String deptName;
+    private String departmentCode;
 }

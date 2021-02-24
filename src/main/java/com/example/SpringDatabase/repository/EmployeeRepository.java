@@ -21,9 +21,11 @@ public interface EmployeeRepository
     @Query("SELECT e FROM Employee e WHERE e.department.id = ?1")
     List<Employee> getEmployeeListByDepartmentId(Long departmentId);
 
+    //way 4
     @Query("SELECT e FROM Employee e WHERE e.department.id = :deptId")
     List<Employee> getEmployeeListByDepartmentIdParam(@Param("deptId") Long departmentId);
 
+    //way5
     @Query(value = "SELECT * FROM employee e WHERE e.department_dept_id = ?1", nativeQuery = true)
     List<Employee> getEmployeeListByNativeQuery(Long departmentId);
 }
