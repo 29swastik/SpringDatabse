@@ -2,7 +2,8 @@ package com.example.SpringDatabase.service;
 
 import com.example.SpringDatabase.dto.EmployeeRequestDto;
 import com.example.SpringDatabase.dto.EmployeeResponseDto;
-import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 public interface EmployeeService {
@@ -11,4 +12,6 @@ public interface EmployeeService {
     EmployeeResponseDto getEmployeeById(long id);
     EmployeeResponseDto updateEmployeeById(long id, EmployeeRequestDto employeeRequestDto);
     EmployeeResponseDto deleteEmployeeById(Long id);
+
+    List<EmployeeResponseDto> getEmployeeListByDepartment(Long id);
 }

@@ -1,5 +1,6 @@
 package com.example.SpringDatabase.dto;
 
+import com.example.SpringDatabase.entity.Department;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,14 @@ import lombok.Setter;
 public class EmployeeResponseDto {
     private long id;
     private String name;
-    private String departmentName;
+    private DepartmentResponseDto department;
+
+    public void setDepartmentFromEntity(Department departmentFromEntity){
+        DepartmentResponseDto departmentResponseDto = new DepartmentResponseDto();
+        departmentResponseDto.setDeptId(departmentFromEntity.getDeptId());
+        departmentResponseDto.setDeptName(departmentFromEntity.getDeptName());
+        department = departmentResponseDto;
+
+    }
 
 }
