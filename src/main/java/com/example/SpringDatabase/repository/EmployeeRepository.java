@@ -28,4 +28,12 @@ public interface EmployeeRepository
     //way5
     @Query(value = "SELECT * FROM employee e WHERE e.department_dept_id = ?1", nativeQuery = true)
     List<Employee> getEmployeeListByNativeQuery(Long departmentId);
+
+    @Query("SELECT e FROM Employee e WHERE e.yearsOfExperience >= ALL(SELECT yearsOfExperience FROM Employee)")
+    List<Employee> getMostExperienced();
+
+    @Query("SELECT e FROM Employee e WHERE e.department.deptId=?1 and e.yearsOfExperience >= ALL(SELECT yearsOfExperience FROM Employee WHERE department.deptId=?1)")
+    List<Employee> getMostExperiencedByDepartment(Long departmentId);
+
+
 }

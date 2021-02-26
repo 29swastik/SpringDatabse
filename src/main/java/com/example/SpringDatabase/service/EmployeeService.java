@@ -14,4 +14,10 @@ public interface EmployeeService {
     EmployeeResponseDto deleteEmployeeById(Long id);
 
     List<EmployeeResponseDto> getEmployeeListByDepartment(Long id);
+
+    List<EmployeeResponseDto> getMostExperiencedEmployee();
+
+    List<EmployeeResponseDto> getMostExperiencedEmployeeInDepartment(Long id);
+
+
 }

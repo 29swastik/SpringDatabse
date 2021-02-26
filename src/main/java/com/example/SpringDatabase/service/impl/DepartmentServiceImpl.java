@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -50,12 +51,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 
         //update department
         department.setDeptName(departmentRequestDto.getDeptName());
-        department.setDepartmentCode(departmentRequestDto.getDepartmentCode());
+     //   department.setDepartmentCode(departmentRequestDto.getDepartmentCode());
         Department savedDepartment = departmentRepository.save(department);
 
-        employeeList.forEach(employee -> {
-            employee.setCode(departmentRequestDto.getDepartmentCode());
-        });
+       // employeeList.forEach(employee -> {
+         //   employee.setCode(departmentRequestDto.getDepartmentCode());
+       // });
 
         employeeRepository.saveAll(employeeList);
 
@@ -63,5 +64,20 @@ public class DepartmentServiceImpl implements DepartmentService {
         BeanUtils.copyProperties(savedDepartment, departmentResponseDto);
 
         return departmentResponseDto;
+    }
+
+    @Override
+    public List<DepartmentResponseDto> getDepartmentWithMaxExperienceSum() {
+        List<Long> longList = departmentRepository.getDeptWithMaxSum();
+
+        List<DepartmentResponseDto> departmentResponseDtos = new ArrayList<>();
+        for(Long lon : longList){
+            DepartmentResponseDto departmentResponseDto = new DepartmentResponseDto();
+            Department department = departmentRepository.findById(lon).get();
+            BeanUtils.copyProperties(department, departmentResponseDto);
+            departmentResponseDtos.add(departmentResponseDto);
+        }
+
+        return departmentResponseDtos;
     }
 }

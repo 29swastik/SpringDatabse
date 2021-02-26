@@ -14,9 +14,8 @@ public class Department {
     @GeneratedValue(generator = "department_id_seq", strategy = GenerationType.AUTO)
 
 
-    private long deptId;
+    private Long deptId;
     private String deptName;
-    private String departmentCode;
 
     @JoinColumn(referencedColumnName = "deptId", name = "department_dept_id")
     @OneToMany

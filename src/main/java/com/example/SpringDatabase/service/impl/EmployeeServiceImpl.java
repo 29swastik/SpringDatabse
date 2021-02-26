@@ -141,5 +141,39 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeResponseDtoList;
     }
 
+    @Override
+    public List<EmployeeResponseDto> getMostExperiencedEmployee() {
+        List<Employee> employeeList = employeeRepository.getMostExperienced();
+        List<EmployeeResponseDto> employeeResponseDtoList = new ArrayList<>();
+
+        for(Employee employee : employeeList){
+            EmployeeResponseDto employeeResponseDto = new EmployeeResponseDto();
+            BeanUtils.copyProperties(employee, employeeResponseDto);
+            employeeResponseDto.setDepartmentFromEntity(employee.getDepartment());
+            employeeResponseDtoList.add(employeeResponseDto);
+        }
+
+        return employeeResponseDtoList;
+
+    }
+
+    @Override
+    public List<EmployeeResponseDto> getMostExperiencedEmployeeInDepartment(Long id) {
+
+        List<Employee> employeeList = employeeRepository.getMostExperiencedByDepartment(id);
+        List<EmployeeResponseDto> employeeResponseDtoList = new ArrayList<>();
+
+        for(Employee employee : employeeList){
+            EmployeeResponseDto employeeResponseDto = new EmployeeResponseDto();
+            BeanUtils.copyProperties(employee, employeeResponseDto);
+            employeeResponseDto.setDepartmentFromEntity(employee.getDepartment());
+            employeeResponseDtoList.add(employeeResponseDto);
+        }
+
+        return employeeResponseDtoList;
+
+    }
+
+
 
 }

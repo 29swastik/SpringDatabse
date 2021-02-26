@@ -6,5 +6,4 @@ import lombok.Data;
 public class DepartmentResponseDto {
     private long deptId;
     private String deptName;
-    private String departmentCode;
 }

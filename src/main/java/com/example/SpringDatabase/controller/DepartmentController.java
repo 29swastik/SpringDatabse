@@ -7,6 +7,8 @@ import com.example.SpringDatabase.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/department")
 public class DepartmentController {
@@ -27,5 +29,10 @@ public class DepartmentController {
     @PutMapping({"/{deptId}"})
     public DepartmentResponseDto updateDepartment(@PathVariable("deptId") Long departmentId, @RequestBody DepartmentRequestDto departmentRequestDto){
         return departmentService.updateDepartment(departmentId, departmentRequestDto);
+    }
+
+    @GetMapping("department/mostExperienced")
+    public List<DepartmentResponseDto> getDepartmentWithMaxExperienceSum(){
+        return departmentService.getDepartmentWithMaxExperienceSum();
     }
 }
