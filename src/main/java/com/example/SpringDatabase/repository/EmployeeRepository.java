@@ -35,5 +35,4 @@ public interface EmployeeRepository
     @Query("SELECT e FROM Employee e WHERE e.department.deptId=?1 and e.yearsOfExperience >= ALL(SELECT yearsOfExperience FROM Employee WHERE department.deptId=?1)")
     List<Employee> getMostExperiencedByDepartment(Long departmentId);
 
-
 }
